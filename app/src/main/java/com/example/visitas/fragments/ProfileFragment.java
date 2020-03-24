@@ -1,4 +1,4 @@
-package com.example.visitas;
+package com.example.visitas.fragments;
 
 import android.os.Bundle;
 
@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.visitas.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GroupFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-    public GroupFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -23,6 +25,6 @@ public class GroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_group, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }

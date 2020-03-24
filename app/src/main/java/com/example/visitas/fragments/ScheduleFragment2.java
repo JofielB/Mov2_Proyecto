@@ -1,4 +1,4 @@
-package com.example.visitas;
+package com.example.visitas.fragments;
 
 import android.os.Bundle;
 
@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.visitas.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ScheduleFragment extends Fragment {
+public class ScheduleFragment2 extends Fragment {
 
-    public ScheduleFragment() {
+    public ScheduleFragment2() {
         // Required empty public constructor
     }
 
