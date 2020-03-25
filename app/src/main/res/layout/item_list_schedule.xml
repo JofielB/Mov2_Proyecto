@@ -11,6 +11,7 @@
         android:id="@+id/imageView2"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:transitionName="visitImage"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_group_test"
         tools:layout_editor_absoluteX="16dp" />
