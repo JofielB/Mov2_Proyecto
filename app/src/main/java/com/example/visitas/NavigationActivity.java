@@ -1,6 +1,9 @@
 package com.example.visitas;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.visitas.fragments.GroupFragment;
@@ -28,25 +31,43 @@ public class NavigationActivity extends AppCompatActivity {
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
         navigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        toolBar.setTitle("GROUPS");
+        toolBar.setTitle("Groups");
         loadFragment(new GroupFragment());
     }
-    
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.header_nav_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.header_nav_settings){
+            Intent intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_groups:
-                    toolBar.setTitle("GROUPS");
+                    toolBar.setTitle("Groups");
                     NavigationActivity.this.loadFragment(new GroupFragment());
                     return true;
                 case R.id.navigation_schedule:
-                    toolBar.setTitle("SCHEDULE");
+                    toolBar.setTitle("Schedule");
                     NavigationActivity.this.loadFragment(new ScheduleFragment());
                     return true;
                 case R.id.navigation_profile:
-                    toolBar.setTitle("PROFILE");
+                    toolBar.setTitle("Profile");
                     NavigationActivity.this.loadFragment(new ProfileFragment());
                     return true;
             }
