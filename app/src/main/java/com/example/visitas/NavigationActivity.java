@@ -1,10 +1,15 @@
 package com.example.visitas;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.visitas.fragments.GroupFragment;
 import com.example.visitas.fragments.ProfileFragment;
@@ -20,6 +25,8 @@ import androidx.fragment.app.FragmentTransaction;
 public class NavigationActivity extends AppCompatActivity {
 
     private ActionBar toolBar;
+    private RelativeLayout relativeLayout;
+    private  BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +35,12 @@ public class NavigationActivity extends AppCompatActivity {
 
         toolBar = getSupportActionBar();
 
-        BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
+        navigationView = findViewById(R.id.bottomNavigationView);
         navigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         toolBar.setTitle("Groups");
+
+        //LOAD FRAGMENT FOR THE FIRST TIME
         loadFragment(new GroupFragment());
     }
 
@@ -51,6 +60,11 @@ public class NavigationActivity extends AppCompatActivity {
         }else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener
@@ -79,7 +93,21 @@ public class NavigationActivity extends AppCompatActivity {
         //LOAD FRAGMENT
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container,fragment);
-        transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    //TODO DARK MODE FUNCTION IN PROGRESS
+    private void setDarkMode(){
+        //GET THE DATA FROM SHARED PREFERENCE
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
+        boolean darkModePreference = sharedPreferences.getBoolean("dark_mode_preference",false);
+
+        relativeLayout = findViewById(R.id.parent_layout);
+        if(darkModePreference){//Dark mode
+            relativeLayout.setBackgroundColor(getColor(R.color.backgroundColorDarkMode));
+        }else{//Light mode
+            relativeLayout.setBackgroundColor(Color.WHITE);
+        }
+        Toast.makeText(this,""+ darkModePreference,Toast.LENGTH_SHORT).show();
     }
 }

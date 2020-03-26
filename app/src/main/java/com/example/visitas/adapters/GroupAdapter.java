@@ -41,7 +41,6 @@ public class GroupAdapter extends ArrayAdapter<GroupModel> {
 //        Button btSchedule, btVisits;
 
         if (convertView == null) {
-
             LayoutInflater llInflator = ((Activity) context).getLayoutInflater();
             convertView = llInflator.inflate(R.layout.item_card_group, parent, false);
         }

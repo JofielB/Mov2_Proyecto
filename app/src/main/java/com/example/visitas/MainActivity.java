@@ -21,5 +21,8 @@ public class MainActivity extends AppCompatActivity {
         //Launch the navigation activity
         Intent intent = new Intent(this, NavigationActivity.class);
         startActivity(intent);
+
+        //Destroy this activity
+        this.finish();
     }
 }

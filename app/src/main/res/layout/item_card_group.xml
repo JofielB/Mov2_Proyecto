@@ -27,7 +27,7 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/img_group_test" />
+                app:srcCompat="@drawable/img_profile_test" />
 
             <!-- Buttons -->
             <LinearLayout

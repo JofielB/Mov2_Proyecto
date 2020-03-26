@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/visit_image"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
         android:transitionName="visitImage"
-        app:srcCompat="@drawable/img_group_test" />
+        app:srcCompat="@drawable/img_profile_test" />
     <ListView
         android:id="@+id/visit_data_list"
         android:layout_width="match_parent"
