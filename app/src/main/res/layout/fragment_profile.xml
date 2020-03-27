@@ -12,20 +12,22 @@
         android:layout_height="250dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/img_group_test" />
+        android:src="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgProfilePic"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="350dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:src="@drawable/img_profile_test"
-        app:layout_constraintBottom_toTopOf="@+id/imgProfileBg"
+        app:layout_constraintBottom_toBottomOf="@+id/imgProfileBg"
         app:layout_constraintEnd_toEndOf="@+id/imgProfileBg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imgProfileBg" />
 
     <ListView
         android:layout_marginTop="25dp"
