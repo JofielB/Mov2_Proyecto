@@ -2,6 +2,7 @@ package com.example.visitas.models;
 
 public class GroupModel {
 
+    int id;
     String group;
     String schedule;
     String image;
@@ -10,6 +11,14 @@ public class GroupModel {
         this.group = group;
         this.schedule = schedule;
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getGroup() {

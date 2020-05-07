@@ -19,23 +19,25 @@ import com.example.visitas.models.GroupModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GroupAdapter extends ArrayAdapter<GroupModel> {
 
     private Context context;
     GroupModel[] dataSet;
     int resourse;
+    private List<GroupModel> groups;
 
-    public GroupAdapter(Context context,  int resource, GroupModel[] dataSet) {
-        super(context, R.layout.item_card_group, dataSet);
+    public GroupAdapter(Context context, int item_card_group, ArrayList<GroupModel> groups) {
+        super(context, R.layout.item_card_group, groups);
         this.context = context;
-        this.resourse = resource;
-        this.dataSet = dataSet;
+        this.resourse = item_card_group;
+        this.groups = groups;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        GroupModel group = groups.get(position);
 //        ImageView ivGroup;
         TextView tvTittle, tvSchedule;
 //        Button btSchedule, btVisits;
@@ -52,8 +54,8 @@ public class GroupAdapter extends ArrayAdapter<GroupModel> {
 //        btVisits = convertView.findViewById(R.id.btVisits);
 
 //        ivGroup.setText(dataSet.get(position).getImage());
-        tvTittle.setText(dataSet[position].getGroup());
-        tvSchedule.setText(dataSet[position].getSchedule());
+        tvTittle.setText(group.getGroup());
+        tvSchedule.setText(group.getSchedule());
 
         return convertView;
     }
