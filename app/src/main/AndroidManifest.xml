@@ -17,7 +17,10 @@
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation" />
         <activity android:name=".AgendaActivity" />
-        <activity android:name=".MainActivity">
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppThemeTecLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
