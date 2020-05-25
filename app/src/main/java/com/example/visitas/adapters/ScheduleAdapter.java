@@ -8,21 +8,26 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.visitas.ListActivity;
 import com.example.visitas.R;
 import com.example.visitas.models.ScheduleModel;
+
+import java.util.ArrayList;
 
 public class ScheduleAdapter extends ArrayAdapter<ScheduleModel> {
 
     private Context context;
-    ScheduleModel[] dataSet;
     int resourse;
 
-    public ScheduleAdapter(Context context, int resource, ScheduleModel[] dataSet) {
-        super(context, R.layout.item_list_schedule, dataSet);
+    private ArrayList<ScheduleModel> agenda;
+
+    public ScheduleAdapter(Context context, int resource, ArrayList<ScheduleModel> objects) {
+        super(context, R.layout.item_list_schedule, objects);
         this.context = context;
         this.resourse = resource;
-        this.dataSet = dataSet;
+        agenda = objects;
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -40,7 +45,7 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleModel> {
         tvCompany = convertView.findViewById(R.id.textViewCompany);
 //        tvDescription = convertView.findViewById(R.id.textViewDescription);
 
-        tvCompany.setText(dataSet[position].getCompany());
+        tvCompany.setText(agenda.get(position).getCompany());
 //        tvDescription.setText(dataSet[position].getDescription());
 
         return convertView;

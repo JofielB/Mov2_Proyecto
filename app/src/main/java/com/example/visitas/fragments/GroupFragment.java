@@ -4,14 +4,27 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.visitas.R;
 import com.example.visitas.adapters.GroupAdapter;
 import com.example.visitas.models.GroupModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 /**
@@ -25,14 +38,9 @@ public class GroupFragment extends Fragment {
 
     View theInflatedView;
 
-    GroupModel[] group = {
-            new GroupModel("Moviles I","15:00 16:00","Moviles"),
-            new GroupModel("Moviles II","14:00 15:000","Moviles"),
-            new GroupModel("Moviles III","13:00 14:000","Moviles"),
-            new GroupModel("Base de Datos","12:00 13:000","Moviles")
+    private RequestQueue queue;
 
-    };
-
+    ArrayList<GroupModel> groups;
 
     public GroupFragment() {
         // Required empty public constructor
@@ -47,12 +55,55 @@ public class GroupFragment extends Fragment {
 
         listView = theInflatedView.findViewById(R.id.listViewGroups);
 
-        adapter = new GroupAdapter(theInflatedView.getContext(),R.layout.item_card_group, group);
+        groups = new ArrayList<>();
 
-        // Inflate the layout for this fragment
-        listView.setAdapter(adapter);
+        obterDatos();
 
         return theInflatedView;
+
+    }
+
+    public void obterDatos() {
+        queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        final String url = "https://gist.githubusercontent.com/luisfayre/fc44c5285b272553c565aecb615a9e5b/raw/3049b5e84002699a2082deb05d7a0dce22a1f9e1/test.json";
+
+        // prepare the Request
+        JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        //Log.wtf("Response", "" + response);
+
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject groupJ = response.getJSONObject(i);
+                                groups.add(new GroupModel(
+                                        groupJ.getInt("id"),
+                                        groupJ.getString("group"),
+                                        groupJ.getString("schedule"),
+                                        groupJ.getString("image")
+                                ));
+                            }
+
+                            adapter = new GroupAdapter(theInflatedView.getContext(),R.layout.item_card_group, groups); //creating adapter object and setting it to recyclerview
+                            listView.setAdapter(adapter); // Inflate the layout for this fragment
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.wtf("Error.Response", String.valueOf(error));
+                    }
+                }
+        );
+
+        // add it to the RequestQueue
+        queue.add(getRequest);
     }
 
 }

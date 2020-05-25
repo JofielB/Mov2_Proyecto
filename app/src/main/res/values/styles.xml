@@ -10,4 +10,10 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="AppThemeTecLogin" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryTecL</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkTecL</item>
+        <item name="colorAccent">@color/colorAccentTecL</item>
+    </style>
+
 </resources>
