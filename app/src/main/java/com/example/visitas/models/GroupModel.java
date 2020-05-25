@@ -13,6 +13,13 @@ public class GroupModel {
         this.image = image;
     }
 
+    public GroupModel(int id, String group, String schedule, String image) {
+        this.id = id;
+        this.group = group;
+        this.schedule = schedule;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }

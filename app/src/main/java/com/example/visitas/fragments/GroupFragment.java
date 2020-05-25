@@ -80,6 +80,7 @@ public class GroupFragment extends Fragment {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject groupJ = response.getJSONObject(i);
                                 groups.add(new GroupModel(
+                                        groupJ.getInt("id"),
                                         groupJ.getString("group"),
                                         groupJ.getString("schedule"),
                                         groupJ.getString("image")
