@@ -4,14 +4,30 @@ import android.content.Context;
 
 public class ScheduleModel {
 
+    int id;
     String company;
     String description;
     String image;
 
-    public ScheduleModel(String company, String description, String image) {
+    public ScheduleModel(int id, String company, String description) {
+        this.id = id;
+        this.company = company;
+        this.description = description;
+    }
+
+    public ScheduleModel(int id, String company, String description, String image) {
+        this.id = id;
         this.company = company;
         this.description = description;
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCompany() {

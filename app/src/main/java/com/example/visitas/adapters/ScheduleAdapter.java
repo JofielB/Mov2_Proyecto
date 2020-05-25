@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.visitas.ListActivity;
 import com.example.visitas.R;
 import com.example.visitas.models.ScheduleModel;
+
+import java.util.ArrayList;
 
 public class ScheduleAdapter extends ArrayAdapter<ScheduleModel> {
 
@@ -23,6 +26,8 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleModel> {
         this.resourse = resource;
         this.dataSet = dataSet;
     }
+
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

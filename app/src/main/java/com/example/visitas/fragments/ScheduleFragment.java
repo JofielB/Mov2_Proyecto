@@ -32,17 +32,16 @@ public class ScheduleFragment extends Fragment {
     View theInflatedView;
 
     ScheduleModel[] schedule = {
-            new ScheduleModel("Bimbo","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 2","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 3","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 4","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 5","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 6","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 7","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 8","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 9","Visita a Bimbo","Moviles"),
-            new ScheduleModel("Bimbo 10","Visita a Bimbo","Moviles")
-
+            new ScheduleModel(1, "Bimbo", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(2, "Bimbo 2", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(3, "Bimbo 3", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(4, "Bimbo 4", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(5, "Bimbo 5", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(6, "Bimbo 6", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(7, "Bimbo 7", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(8, "Bimbo 8", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(9, "Bimbo 9", "Visita a Bimbo", "Moviles"),
+            new ScheduleModel(10, "Bimbo 10", "Visita a Bimbo", "Moviles")
 
 
     };
@@ -62,7 +61,7 @@ public class ScheduleFragment extends Fragment {
 
         listView = theInflatedView.findViewById(R.id.listViewGroups);
 
-        adapter = new ScheduleAdapter(theInflatedView.getContext(),R.layout.item_list_schedule, schedule);
+        adapter = new ScheduleAdapter(theInflatedView.getContext(), R.layout.item_list_schedule, schedule);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,13 +71,12 @@ public class ScheduleFragment extends Fragment {
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) adapter.getContext(),
                         visitImage,
                         ViewCompat.getTransitionName(visitImage));
-                startActivity(intent,options.toBundle());
+                startActivity(intent, options.toBundle());
             }
         });
 
         // Inflate the layout for this fragment
         listView.setAdapter(adapter);
-
 
 
         return theInflatedView;
