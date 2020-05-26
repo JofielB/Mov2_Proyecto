@@ -1,2 +1,4 @@
 # Mov2-Proyecto
-# Mov2_Proyecto
+# Jofiel Batista Farías
+# David Aaron Banda Gutierrez
+# Luis Angel Alcudia Juarez
