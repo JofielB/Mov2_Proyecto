@@ -61,8 +61,9 @@ public class ListActivity extends AppCompatActivity {
         agendaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(getApplicationContext(), "Id: " + agenda.get(i).getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "visitId: " + agenda.get(i).getId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), VisitActivity.class);
+                intent.putExtra("visitId", agenda.get(i).getId());
 //                intent.putExtra("id", users.get(i).getId());
 //                intent.putExtra("lastname", users.get(i).getLastName());
 //                intent.putExtra("name", users.get(i).getName());
