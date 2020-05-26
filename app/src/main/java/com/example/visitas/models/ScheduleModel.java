@@ -7,6 +7,7 @@ public class ScheduleModel {
     int id;
     String company;
     String description;
+    String date;
     String image;
 
     public ScheduleModel(int id, String company, String description) {
@@ -15,12 +16,21 @@ public class ScheduleModel {
         this.description = description;
     }
 
-    public ScheduleModel(int id, String company, String description, String image) {
+    public ScheduleModel(int id, String company, String description, String date) {
         this.id = id;
         this.company = company;
         this.description = description;
+        this.date = date;
+    }
+
+    public ScheduleModel(int id, String company, String description, String date, String image) {
+        this.id = id;
+        this.company = company;
+        this.description = description;
+        this.date = date;
         this.image = image;
     }
+
 
     public int getId() {
         return id;
@@ -44,6 +54,14 @@ public class ScheduleModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getImage() {

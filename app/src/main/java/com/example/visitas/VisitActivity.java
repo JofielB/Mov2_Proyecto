@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,6 +25,8 @@ public class VisitActivity extends AppCompatActivity {
         toolBar = getSupportActionBar();
         toolBar.setTitle("Visit");
 
+        toolBar.setDisplayHomeAsUpEnabled(true); // Activamos boton atras
+
         visitData = new ArrayList<String>();
         visitData.add("Empresa: Bimbo");
         visitData.add("Profesor: Pepe");
@@ -34,9 +37,20 @@ public class VisitActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.visit_data_list);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, visitData);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, visitData);
 
         // Inflate the layout for this fragment
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

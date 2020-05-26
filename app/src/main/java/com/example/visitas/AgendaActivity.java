@@ -2,14 +2,21 @@ package com.example.visitas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.security.keystore.StrongBoxUnavailableException;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class AgendaActivity extends AppCompatActivity {
 
@@ -21,6 +28,9 @@ public class AgendaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
+
+        getSupportActionBar().setTitle("Agendar visita");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Activamos boton atras
 
         tittleEditText = findViewById(R.id.et_tittle);
         descriptionEditText = findViewById(R.id.et_description);
@@ -58,6 +68,9 @@ public class AgendaActivity extends AppCompatActivity {
     }
 
     private void agendar(String tittle, String description) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
         String msg = "AGENDA SUCCESSFULLY CREATED";
         db.beginTransaction();
         try {
@@ -66,9 +79,12 @@ public class AgendaActivity extends AppCompatActivity {
                     + " id integer PRIMARY KEY autoincrement, "
                     + " groupId integer, "
                     + " tittle text, "
-                    + " description text); ");
-            db.execSQL("insert into AGENDA(groupId, tittle, description) values ( '" + groupId + "', '" + tittle + "' ,'" + description + "');");
+                    + " description text, "
+                    + " created_at text); ");
+
+            db.execSQL("insert into AGENDA(groupId, tittle, description, created_at) values ( '" + groupId + "', '" + tittle + "' ,'" + description + "' ,'" + currentDateandTime + "');");
             db.setTransactionSuccessful(); //commit your changes
+            abrirPantallaVisitas();
         } catch (SQLiteException e) {
             //report problem
             msg = "ERROR: " + e.getMessage();
@@ -76,6 +92,24 @@ public class AgendaActivity extends AppCompatActivity {
             db.endTransaction();
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
         }
+    }
 
+    private void abrirPantallaVisitas() {
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("groupId", groupId);
+        this.finish();
+        startActivity(intent);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
