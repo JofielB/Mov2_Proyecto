@@ -11,9 +11,9 @@
         android:id="@+id/et_tittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="215dp"
+        android:layout_marginTop="90dp"
         android:ems="10"
-        android:hint="Titulo"
+        android:hint="Empresa"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,17 +25,18 @@
         android:layout_height="160dp"
         android:layout_marginTop="34dp"
         android:gravity="top"
-        android:hint="Descripcion"
+        android:hint="Descripción de la visita"
         android:inputType="text|textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_tittle" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_agregar"
-        android:onClick="btnagendar"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="btnagendar"
         android:text="Agendar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

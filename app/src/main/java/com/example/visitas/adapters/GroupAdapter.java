@@ -59,7 +59,7 @@ public class GroupAdapter extends ArrayAdapter<GroupModel> {
         btSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Button Pulsado: " + group.getId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Button Pulsado: " + group.getId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context.getApplicationContext(), AgendaActivity.class);
                 intent.putExtra("groupId", group.getId());
                 context.startActivity(intent);
@@ -69,7 +69,7 @@ public class GroupAdapter extends ArrayAdapter<GroupModel> {
         btVisits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Button Pulsado: " + group.getId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Button Pulsado: " + group.getId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context.getApplicationContext(), ListActivity.class);
                 intent.putExtra("groupId", group.getId());
                 context.startActivity(intent);
